@@ -1,20 +1,27 @@
 from flask import Flask, render_template, request
 from chatterbot import ChatBot
-from chatterbot.trainers import ChatterBotCorpusTrainer
-import languages
+from chatterbot.trainers import ListTrainer
 
 app = Flask(__name__)
 
 bot = ChatBot(
         name='MyBot',
-        tagger_language=languages.JPN
+        database_uri='sqlite:///mydb.sqlite3'
 )
 
-trainer = ChatterBotCorpusTrainer(bot)
-trainer.train(
-        'chatterbot.corpus.japanese' # 日本語版コーパスを設定
-)
+conversation = [
+    "Hello", 
+    "Hi there!",
+    "How are you?",
+    "I am good.", 
+    "That is good to hear.",
+    "Thank you", 
+    "You are welcome.", 
+]
 
+trainer = ListTrainer(bot)
+
+trainer.train(conversation)
 
 @app.route("/")
 def home():    
