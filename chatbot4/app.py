@@ -11,12 +11,12 @@ bot = ChatBot(
 
 conversation = [
     "Hello", 
-    "Hi there!",
-    "How are you?",
-    "I am good.", 
-    "That is good to hear.",
-    "Thank you", 
-    "You are welcome.", 
+    "Hi there!"
+    # "How are you?",
+    # "I am good.", 
+    # "That is good to hear.",
+    # "Thank you", 
+    # "You are welcome.", 
 ]
 
 trainer = ListTrainer(bot)
@@ -30,5 +30,6 @@ def home():
 def get_bot_response():    
     userText = request.args.get('msg')    
     return str(bot.get_response(userText)) 
-if __name__ == "__main__":    
-    app.run()
+
+if __name__ == "__main__":
+    app.run(debug=True)

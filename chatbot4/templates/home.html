@@ -1,50 +1,52 @@
 {% extends "layout.html" %}
 {% block time %}
-    <img />
-    <center>
-      <h1>
-        <img　src="/static/images/kuma.png" alt="くま"
-          style="width:40px;height:auto;"
-        />ChatBot
-      </h1>
-    </center>
-    <div class="box"></div>
-    <div class="boxed">
-      <div>
-        <div id="chatbox">
-          <img　src="/static/images/kuma.png" alt="くま"
-            style="width:40px;height:auto;"
-          />
-          <p class="botText">
-            <span>こんにちは何でも話しかけてみてね </span>
-          </p>
-        </div>
-        <div id="userInput">
-          <input id="textInput" type="text" name="msg" placeholder="Message" />
-        </div>
-      </div>
-      <script>
-        function getBotResponse() {
-          var rawText = $("#textInput").val();
-          var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
-          $("#textInput").val("");
-          $("#chatbox").append(userHtml);
-          document
-            .getElementById("userInput")
-            .scrollIntoView({ block: "start", behavior: "smooth" });
-          $.get("/get", { msg: rawText }).done(function(data) {
-            var botHtml = '<p class="botText"><span>' + data + "</span></p>";
-            $("#chatbox").append(botHtml);
-            document
-              .getElementById("userInput")
-              .scrollIntoView({ block: "start", behavior: "smooth" });
-          });
-        }
-        $("#textInput").keypress(function(e) {
-          if (e.which == 13) {
-            getBotResponse();
-          }
-        });
-      </script>
+<!-- <img /> -->
+
+<h1>
+  <img src="/static/images/kuma.png" alt="くま" style="width:30px;height:auto;" />
+  ChatBot
+</h1>
+
+<div class="box"></div>
+<div class="boxed">
+  <div>
+    <div id="chatbox">
+      <img src=" /static/images/kuma.png" alt="くま" style="width:40px;height:auto;" />
+      <p class="botText">
+        <span>こんにちは何でも話しかけてみてね </span>
+      </p>
     </div>
-    {% endblock %}
+    <div id="userInput">
+      <input id="textInput" type="text" name="msg" placeholder="Message" />
+    </div>
+  </div>
+  <script>
+    function getBotResponse() {
+      var rawText = $("#textInput").val();
+      var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+      $("#textInput").val("");
+      $("#chatbox").append(userHtml);
+      document
+        .getElementById("userInput")
+        .scrollIntoView({ block: "start", behavior: "smooth" });
+      $.get("/get", { msg: rawText }).done(function (data) {
+        var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+        $("#chatbox").append(botHtml);
+        document
+          .getElementById("userInput")
+          .scrollIntoView({ block: "start", behavior: "smooth" });
+      });
+    }
+    $("#textInput").keypress(function (e) {
+      if (e.which == 13) {
+        getBotResponse();
+      }
+    });
+  </script>
+
+<script type=text/javascript src="{{ url_for('static', filename='js/index.js') }}">
+  var nowtime_doc = document.getElementById("nowtime");
+  nowtime_doc.innerHTML = "TIME " + get_message();
+</script>
+</div>
+{% endblock %}
