@@ -6,17 +6,17 @@ app = Flask(__name__)
 
 bot = ChatBot(
         name='MyBot',
-        database_uri='sqlite:///mydb.sqlite3'
+        
 )
 
 conversation = [
     "Hello", 
     "Hi there!"
-    # "How are you?",
-    # "I am good.", 
-    # "That is good to hear.",
-    # "Thank you", 
-    # "You are welcome.", 
+    "How are you?",
+    "I am good.", 
+    "That is good to hear.",
+    "Thank you", 
+    "You are welcome.", 
 ]
 
 trainer = ListTrainer(bot)
@@ -26,6 +26,7 @@ trainer.train(conversation)
 @app.route("/")
 def home():    
     return render_template("home.html") 
+
 @app.route("/get")
 def get_bot_response():    
     userText = request.args.get('msg')    
