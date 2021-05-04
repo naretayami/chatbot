@@ -18,3 +18,11 @@ def get_bot_response():
 
 if __name__ == "__main__":
     app.run()
+
+# while True:
+#     try:
+#         input_data = input('YOU: ')
+#         response = bot.get_response(input_data)
+#         print('{}: {}'.format(bot.name, response))
+#     except(KeyboardInterrupt, EOFError, SystemExit):
+#         break
