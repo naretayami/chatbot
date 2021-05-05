@@ -8,3 +8,5 @@ function get_message() {
     + now_date.getMinutes() + "分 "
     + now_date.getSeconds() + "秒 ";
 }
+  var nowtime_doc = document.getElementById("nowtime");
+  nowtime_doc.innerHTML = "TIME " + get_message();
