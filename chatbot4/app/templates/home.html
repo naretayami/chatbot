@@ -1,25 +1,21 @@
 {% extends "layout.html" %}
 {% block time %}
-<!-- <img /> -->
 
-<h1>
-  <img src="/static/images/kuma.png" alt="くま" style="width:30px;height:auto;" />
-  ChatBot
-</h1>
+<h1>ChatBot</h1>
 
-<div class="box"></div>
 <div class="boxed">
   <div>
     <div id="chatbox">
       <img src=" /static/images/kuma.png" alt="くま" style="width:40px;height:auto;" />
       <p class="botText">
-        <span>こんにちは何でも話しかけてみてね </span>
+        <span>こんにちは。何でも話しかけてみてね </span>
       </p>
     </div>
-    <div id="userInput">
-      <input id="textInput" type="text" name="msg" placeholder="Message" />
-    </div>
   </div>
+  <div id="userInput">
+    <input id="textInput" type="text" name="msg" placeholder="Message" />
+  </div>
+
   <script>
     function getBotResponse() {
       var rawText = $("#textInput").val();
@@ -43,10 +39,9 @@
       }
     });
   </script>
-
-<script type=text/javascript src="{{ url_for('static', filename='js/index.js') }}">
+  <script type=text/javascript src="{{ url_for('static', filename='js/index.js') }}"></script>
   var nowtime_doc = document.getElementById("nowtime");
   nowtime_doc.innerHTML = "TIME " + get_message();
-</script>
+  </script>
 </div>
 {% endblock %}
