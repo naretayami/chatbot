@@ -1,15 +1,25 @@
 {% extends "layout.html" %}
 {% block time %}
 
-<h1>新規登録</h1>
-<a href="/top">ログイン画面に戻る</a>
-{% if status == "exist_user" %}
-<p>そのユーザは既に登録されています</p>
-{% endif %}
-<form action="/registar" method="post">
-    <input type="text" name="user_name" placeholder="user name">
-    <input type="password" name="password" placeholder="password">
-    <input type="submit" value="新規登録">
-</form>
+<div class="text-center">
+    {% if status == "exist_user" %}
+    <div class="alert alert-danger" role="alert">
+        <p>そのユーザは既に登録されています</p>
+    </div>
+    {% endif %}
 
+    <!-- <div class="alert alert-danger" role="alert">
+    </div> -->
+
+    <h1 class="h3 mt-2 mb-3 font-weight-normal">新規登録</h1>
+    <form class="w-25 mx-auto" action="/registar" method="post">
+        <label for="username" class="sr-only"></label>
+        <input class="form-control" id="username" type="text" name="user_name" placeholder="ユーザネーム" required
+            autofocus />
+        <label for="password" class="sr-only"></label>
+        <input class="form-control" id="password" type="password" name="password" placeholder="パスワード" required />
+        <input class="btn btn-outline-primary my-1" type="submit" value="新規登録" />
+    </form>
+    <p><a href="/top">ログイン画面</a>に戻る</p>
+</div>
 {% endblock %}
