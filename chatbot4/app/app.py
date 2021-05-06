@@ -1,10 +1,11 @@
 from flask import Flask,render_template,request,session,redirect,url_for
+from chatterbot import ChatBot
 from models.models import User
 from models.database import db_session
 from datetime import datetime
 from app import key
 from hashlib import sha256
-from chatterbot import ChatBot
+
 
 app = Flask(__name__)
 app.secret_key = key.SECRET_KEY
@@ -14,8 +15,8 @@ bot = ChatBot(
 )
 
 @app.route("/")
-# def home():    
-    # return render_template("top.html") 
+def index():    
+    return render_template("top.html") 
 
 @app.route("/get")
 def get_bot_response():    
