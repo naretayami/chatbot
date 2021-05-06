@@ -15,18 +15,18 @@ bot = ChatBot(
 
 @app.route("/")
 # def home():    
-#     return render_template("top.html") 
+    # return render_template("top.html") 
 
 @app.route("/get")
 def get_bot_response():    
     userText = request.args.get('msg')    
     return str(bot.get_response(userText)) 
 
-@app.route("/index")
-def index():
+@app.route("/home")
+def home():
     if "user_name" in session:
         name = session["user_name"]
-        return render_template("index.html",name=name)
+        return render_template("home.html",name=name)
     else:
         return redirect(url_for("top",status="logout"))
 
@@ -45,17 +45,17 @@ def login():
         hashed_password = sha256((user_name + password + key.SALT).encode("utf-8")).hexdigest()
         if user.hashed_password == hashed_password:
             session["user_name"] = user_name
-            return redirect(url_for("index"))
+            return redirect(url_for("home"))
         else:
             return redirect(url_for("top",status="wrong_password"))
     else:
         return redirect(url_for("top",status="user_notfound"))
 
 
-@app.route("/newcomer")
-def newcomer():
+@app.route("/signup")
+def signup():
     status = request.args.get("status")
-    return render_template("newcomer.html",status=status)
+    return render_template("signup.html",status=status)
 
 
 @app.route("/registar",methods=["post"])
@@ -63,7 +63,7 @@ def registar():
     user_name = request.form["user_name"]
     user = User.query.filter_by(user_name=user_name).first()
     if user:
-        return redirect(url_for("newcomer",status="exist_user"))
+        return redirect(url_for("signup",status="exist_user"))
     else:
         password = request.form["password"]
         hashed_password = sha256((user_name + password + key.SALT).encode("utf-8")).hexdigest()
@@ -71,7 +71,7 @@ def registar():
         db_session.add(user)
         db_session.commit()
         session["user_name"] = user_name
-        return redirect(url_for("index"))
+        return redirect(url_for("home"))
 
 
 @app.route("/logout")
