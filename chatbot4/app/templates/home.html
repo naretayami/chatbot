@@ -3,20 +3,23 @@
 
 <h1>ChatBot</h1>
 
-<a href="/logout">ログアウト</a>
-<p>こんにちは。{{ name }}さん。</p>
+<h3><a class="logout" href="/logout">ログアウト</a></h3>
+
+<h3>{{ name }}さん、ようこそ。</h3>
 
 <div class="boxed">
   <div>
     <div id="chatbox">
-      <img src=" /static/images/kuma.png" alt="くま" style="width:40px;height:auto;" />
+      <img src="/static/images/kuma.png" alt="くま"></img>
+      <link href="{{ url_for('static',filename='images/kuma.png') }}">
+
       <p class="botText">
-        <span>こんにちは。何でも話しかけてみてね </span>
+        <span>こんにちは。何か話しかけてみてね </span>
       </p>
     </div>
   </div>
   <div id="userInput">
-    <input id="textInput" type="text" name="msg" placeholder="Message" />
+    <input id="textInput" type="text" name="msg" placeholder="ここに記入" />
   </div>
 
   <script>
@@ -41,10 +44,6 @@
         getBotResponse();
       }
     });
-  </script>
-  <script type=text/javascript src="{{ url_for('static', filename='js/index.js') }}"></script>
-  var nowtime_doc = document.getElementById("nowtime");
-  nowtime_doc.innerHTML = "TIME " + get_message();
   </script>
 </div>
 {% endblock %}
