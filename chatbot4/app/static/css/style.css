@@ -17,6 +17,11 @@ h3 {
   text-align: center;
 }
 
+#kuma{
+  width: 40px;
+  height: auto;
+}
+
 #chatbox {
   margin-left: auto;
   margin-right: auto;

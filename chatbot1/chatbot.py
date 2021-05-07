@@ -6,7 +6,6 @@ import languages
 bot = ChatBot(
         name='MyBot',
         tagger_language=languages.JPN  # 日本語設定
-        # tagger_language=languages.GINZA
 )
 
 trainer = ChatterBotCorpusTrainer(bot)
