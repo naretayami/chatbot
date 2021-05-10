@@ -31,5 +31,10 @@ for ent in doc.ents:
 # イギリス GPE
 # 10億円 MONEY
 
+nlp = spacy.load("ja_core_news_sm")
 
+text = "Appleと日本と米国。ニトリと1億円。"
+doc = nlp(text)
 
+for ent in doc.ents:
+    print(ent.text, ent.label_)

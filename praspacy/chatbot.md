@@ -23,13 +23,13 @@ spacy.pyのファイルを作ってpython spacy.pyをやったら、spacyとい�
 →再起動＆pra.pyに変更したらなおった
 
 意味
->>> import spacy
->>> spacy.explain("dobj")
-'direct object'
->>> spacy.explain("NNP")
-'noun, proper singular'
->>> spacy.explain("GPE")
-'Countries, cities, states'
+- >>> import spacy
+- >>> spacy.explain("dobj")
+ - 'direct object'
+- >>> spacy.explain("NNP")
+ - 'noun, proper singular'
+- >>> spacy.explain("GPE")
+ - 'Countries, cities, states'
 
 ### spacyのお勉強
 - 言語、パイプライン、ライセンスが記載されているメタファイル(meta.json)がある
