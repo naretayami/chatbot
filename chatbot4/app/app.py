@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request,session,redirect,url_for
 from chatterbot import ChatBot
-from models.models import User
+from models.models import User, studyuser
 from models.database import db_session
 from datetime import datetime
 from app import key
