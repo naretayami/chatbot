@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block time %}
+
+<h3><a class="logout" href="/logout">ログアウト</a></h3>
+
+<h3>{{ name }}さん、ようこそ。</h3>
+
+<h3>記録</h3>
+<p>新規追加</p>
+<form action="/add" method="post">
+    <input type="text" name="kamoku" placeholder="科目">
+    <input type="text" name="kiroku" placeholder="記録">
+    <input type="integer" name="time" placeholder="時間">
+    <input type="submit" value="追加">
+</form>
+
+
+<p>編集</p>
+<form action="/update" method="post">
+    <input type="text" name="kamoku" placeholder="科目">
+    <input type="text" name="kiroku" placeholder="記録">
+    <input type="integer" name="time" placeholder="時間">
+    <input type="submit" value="更新">
+</form>
+
+    {% for onegai in all_onegai %}
+    <div>
+        <input type="radio" name="update" value={{onegai.id}}>
+        <input type="checkbox" name="delete" form="delete" value="{{onegai.id}}">
+        {{onegai.title}}：{{onegai.body}}（{{onegai.date}})
+    </div>
+    {% endfor %}
+<br>
+<form action="/delete" method="post" id="delete">
+    <input type="submit" value="チェックしたアイテムを削除する">
+</form>
+
+
+{% endblock %}

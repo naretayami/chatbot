@@ -18,10 +18,12 @@ bot = ChatBot(
 def index():    
     return render_template("top.html") 
 
+
 @app.route("/get")
 def get_bot_response():    
     userText = request.args.get('msg')    
     return str(bot.get_response(userText)) 
+
 
 @app.route("/home")
 def home():
@@ -30,6 +32,7 @@ def home():
         return render_template("home.html",name=name)
     else:
         return redirect(url_for("top",status="logout"))
+
 
 @app.route("/top")
 def top():
@@ -79,6 +82,37 @@ def registar():
 def logout():
     session.pop("user_name", None)
     return redirect(url_for("top",status="logout"))
+
+
+@app.route("/add",methods=["post"])
+def add():
+    kamoku = request.form["kamoku"]
+    kiroku = request.form["kiroku"]
+    time = request.form["time"]
+    content = OnegaiContent(kamoku,kiroku,time,datetime.now())
+    db_session.add(content)
+    db_session.commit()
+    return redirect(url_for("home"))
+
+
+@app.route("/update",methods=["post"])
+def update():
+    content = OnegaiContent.query.filter_by(id=request.form["update"]).first()
+    content.title = request.form["title"]
+    content.body = request.form["body"]
+    db_session.commit()
+    return redirect(url_for("index"))
+
+
+@app.route("/delete",methods=["post"])
+def delete():
+    id_list = request.form.getlist("delete")
+    for id in id_list:
+        content = OnegaiContent.query.filter_by(id=id).first()
+        db_session.delete(content)
+    db_session.commit()
+    return redirect(url_for("index"))
+
 
 if __name__ == "__main__":
     app.run(debug=True)

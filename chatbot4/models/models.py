@@ -7,7 +7,7 @@ class studyuser(Base):
     id = Column(Integer, primary_key=True)
     kamoku = Column(String(128), unique=True)
     kiroku = Column(Text)
-    time = column(Text)
+    time = Column(Integer)
     date = Column(DateTime, default=datetime.now())
 
     def __init__(self, title=None, body=None, date=None):
