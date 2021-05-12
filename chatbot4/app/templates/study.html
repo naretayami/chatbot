@@ -10,7 +10,7 @@
 <form action="/add" method="post">
     <input type="text" name="kamoku" placeholder="科目">
     <input type="text" name="kiroku" placeholder="記録">
-    <input type="integer" name="time" placeholder="時間">
+    <input type="number" name="time" placeholder="時間">
     <input type="submit" value="追加">
 </form>
 
@@ -23,11 +23,11 @@
     <input type="submit" value="更新">
 </form>
 
-    {% for onegai in all_onegai %}
+    {% for study in all_study %}
     <div>
-        <input type="radio" name="update" value={{onegai.id}}>
-        <input type="checkbox" name="delete" form="delete" value="{{onegai.id}}">
-        {{onegai.title}}：{{onegai.body}}（{{onegai.date}})
+        <input type="radio" name="update" value={{study.id}}>
+        <input type="checkbox" name="delete" form="delete" value="{{study.id}}">
+        {{study.kamoku}}：{{study.kiroku}}:{{study.time}}時間（{{study.date}})
     </div>
     {% endfor %}
 <br>

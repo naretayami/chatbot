@@ -14,6 +14,7 @@ bot = ChatBot(
         name='MyBot',     
 )
 
+
 @app.route("/")
 def index():    
     return render_template("top.html") 
@@ -84,34 +85,45 @@ def logout():
     return redirect(url_for("top",status="logout"))
 
 
+@app.route("/study")
+def study():
+    if "user_name" in session:
+        name = session["user_name"]
+        all_study = studyuser.query.all()
+        return render_template("study.html",name=name,all_study=all_study)
+    else:
+        return redirect(url_for("top",status="logout"))
+
+
 @app.route("/add",methods=["post"])
 def add():
     kamoku = request.form["kamoku"]
     kiroku = request.form["kiroku"]
     time = request.form["time"]
-    content = OnegaiContent(kamoku,kiroku,time,datetime.now())
+    content = studyuser(kamoku,kiroku,time,datetime.now())
     db_session.add(content)
     db_session.commit()
-    return redirect(url_for("home"))
+    return redirect(url_for("study"))
 
 
 @app.route("/update",methods=["post"])
 def update():
-    content = OnegaiContent.query.filter_by(id=request.form["update"]).first()
+    content = studyuser.query.filter_by(id=request.form["update"]).first()
     content.title = request.form["title"]
     content.body = request.form["body"]
+    time = request.form["time"]
     db_session.commit()
-    return redirect(url_for("index"))
+    return redirect(url_for("study"))
 
 
 @app.route("/delete",methods=["post"])
 def delete():
     id_list = request.form.getlist("delete")
     for id in id_list:
-        content = OnegaiContent.query.filter_by(id=id).first()
+        content = studyuser.query.filter_by(id=id).first()
         db_session.delete(content)
     db_session.commit()
-    return redirect(url_for("index"))
+    return redirect(url_for("study"))
 
 
 if __name__ == "__main__":

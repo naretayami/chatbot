@@ -10,7 +10,7 @@ class studyuser(Base):
     time = Column(Integer)
     date = Column(DateTime, default=datetime.now())
 
-    def __init__(self, title=None, body=None, date=None):
+    def __init__(self, kamoku=None, kiroku=None, time=None, date=None):
         self.kamoku = kamoku
         self.kiroku = kiroku
         self.time = time
