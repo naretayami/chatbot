@@ -4,6 +4,7 @@ import languages
 
 bot = ChatBot(
         name='MyBot',
+        read_only=True,
         tagger_language=languages.JPN  
 )
 

@@ -1,15 +1,37 @@
 from chatterbot import ChatBot
-from chatterbot.trainers import ChatterBotCorpusTrainer
+from chatterbot.trainers import ListTrainer,ChatterBotCorpusTrainer, ListTrainer
 import languages
 
 
 bot = ChatBot(
         name='MyBot',
-        tagger_language=languages.JPN  # 日本語設定
+        tagger_language=languages.JPN,  # 日本語設定
+        storage_adapter='chatterbot.storage.SQLStorageAdapter',
+        # logic_adapters=[
+        #     'chatterbot.logic.MathematicalEvaluation',
+        # ],
+        database_uri='sqlite:///mydb.chatbot'
+
 )
 
-trainer = ChatterBotCorpusTrainer(bot)
+# print('何か話しかけてね')
 
+# response = bot.get_response('What time is it?')
+# print(response)
+
+conversarion = [
+    '勉強したくない',
+    'もう少し頑張れ！',
+    '疲れた',
+    '5分休憩したらどう？',
+    'お腹すいた',
+    'チョコがお勧めだよ',
+]
+
+trainer = ListTrainer(bot)
+trainer.train(conversarion)
+
+trainer = ChatterBotCorpusTrainer(bot)
 trainer.train(
         'chatterbot.corpus.japanese' # 日本語版コーパスを設定
 )
