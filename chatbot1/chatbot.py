@@ -8,16 +8,11 @@ bot = ChatBot(
         tagger_language=languages.JPN,  # 日本語設定
         storage_adapter='chatterbot.storage.SQLStorageAdapter',
         # logic_adapters=[
-        #     'chatterbot.logic.MathematicalEvaluation',
+        #     'chatterbot.logic.MathematicalEvaluation'
         # ],
-        database_uri='sqlite:///mydb.chatbot'
+        database_uri='sqlite:///mydb.chatbot',
 
 )
-
-# print('何か話しかけてね')
-
-# response = bot.get_response('What time is it?')
-# print(response)
 
 conversarion = [
     '勉強したくない',
