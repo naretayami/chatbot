@@ -5,7 +5,8 @@ import languages
 bot = ChatBot(
         name='MyBot',
         read_only=True,
-        tagger_language=languages.JPN  
+        tagger_language=languages.JPN ,
+        database_uri='mysql://root:renarena@localhost:3306/chatbot?charset=utf8mb4'
 )
 
 conversarion = [
