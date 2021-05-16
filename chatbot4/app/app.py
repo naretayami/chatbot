@@ -94,6 +94,13 @@ def study():
     else:
         return redirect(url_for("top",status="logout"))
 
+@app.route('/new')
+def new():
+    if "user_name" in session:
+        all_study = studyuser.query.all()
+        return render_template("new.html",name=name,all_study=all_study)
+    else:
+        return redirect(url_for("top",status="logout"))
 
 @app.route("/add",methods=["post"])
 def add():
