@@ -17,8 +17,6 @@ conversation = [
     'チョコがお勧めだよ',
     'なんにもしたくない',
     '一度寝よう！',
-    'くま',
-    '<img id="kuma" src="/static/images/kuma.png" alt="くま"></img>
 ]
 
 conversation2 = [

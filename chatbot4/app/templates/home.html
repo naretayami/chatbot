@@ -20,14 +20,14 @@
     </div>
   </div>
   <div id="userInput">
-    <img id="kuma" src="/static/images/kuma.png" alt="くま"></img>
+    <img id="kuma" src="/static/images/araiguma.png" alt="アライグマ"></img>
     <input id="textInput" type="text" name="msg" placeholder="ここに記入" />
   </div>
 
   <script>
     function getBotResponse() {
       var rawText = $("#textInput").val();
-      var userHtml = '<img id="" src="/static/images/kuma.png" alt="くま"></img>' +'<p class="userText"><span>' + rawText + "</span></p>";
+      var userHtml = '<img id="araiguma" src="/static/images/araiguma.png" alt="アライグマ"></img>' +'<p class="userText"><span>' + rawText + "</span></p>";
       $("#textInput").val("");
       $("#chatbox").append(userHtml);
       document
