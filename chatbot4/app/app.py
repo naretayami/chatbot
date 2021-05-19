@@ -97,8 +97,8 @@ def study():
 @app.route('/new')
 def new():
     if "user_name" in session:
-        all_study = studyuser.query.all()
-        return render_template("new.html",name=name,all_study=all_study)
+        name = session["user_name"]
+        return render_template("new.html",name=name)
     else:
         return redirect(url_for("top",status="logout"))
 
@@ -115,22 +115,31 @@ def add():
         return redirect(url_for("study"))
 
 
-@app.route("/update",methods=["post"])
-def update():
-    content = studyuser.query.filter_by(id=request.form["update"]).first()
-    content.title = request.form["title"]
-    content.body = request.form["body"]
-    time = request.form["time"]
+@app.route("/edit/<int:id>/")
+def edit(id):
+    if "user_name" in session:
+        name = session["user_name"]
+        study = studyuser.query.get(id)
+        return render_template("edit.html", name=name, id=id, study=study)
+    else:
+        return redirect(url_for("top",status="logout"))
+
+
+@app.route("/update/<int:id>",methods=["post"])
+def update(id):
+    content = studyuser.query.filter_by(id=id).first()
+    content.kamoku = request.form["kamoku"]
+    content.kiroku = request.form["kiroku"]
+    content.time = request.form["time"]
     db_session.commit()
     return redirect(url_for("study"))
 
 
-@app.route("/delete",methods=["post"])
-def delete():
+@app.route("/delete/<int:id>/",methods=["post"])
+def delete(id):
     id_list = request.form.getlist("delete")
-    for id in id_list:
-        content = studyuser.query.filter_by(id=id).first()
-        db_session.delete(content)
+    content = studyuser.query.filter_by(id=id).first()
+    db_session.delete(content)
     db_session.commit()
     return redirect(url_for("study"))
 

@@ -8,15 +8,6 @@
 
 <h3>記録</h3>
 
-
-<p>編集</p>
-<form action="/update" method="post">
-    <input type="text" name="kamoku" placeholder="科目">
-    <input type="text" name="kiroku" placeholder="記録">
-    <input type="integer" name="time" placeholder="時間">
-    <input type="submit" value="更新">
-</form>
-
 <div class="table-responsive">
     <table class="table table-striped">
         <tr>
@@ -24,7 +15,8 @@
             <th>内容</th>
             <th>勉強時間</th>
             <th>登録日時</th>
-
+            <th>削除</th>
+            <th></th>
         </tr>
         {% for study in all_study %}
         {% if study.userid == name %}
@@ -33,45 +25,21 @@
             <td>{{study.kiroku}}</td>
             <td>{{study.time}}時間</td>
             <td>{{study.date}}</td>
+            <td>
+                <form action="/delete/{{study.id}}" method="post" id="delete">
+                    <input type="submit" name="delete" value="削除する">
+            </td>
+            <td>
+                <a class="edit" href="/edit/{{study.id}}">編集する</a>
+            </td>
         </tr>
         {% endif %}
         {% endfor %}
     </table>
 </div>
 
+<h4><a class="new" href="/new">新規追加</a></h4>
 
-<p>新規追加</p>
-<form action="/add" method="post">
-    <input type="text" name="kamoku" placeholder="科目">
-    <input type="text" name="kiroku" placeholder="記録">
-    <input type="number" name="time" placeholder="時間">
-    <input type="submit" value="追加">
-</form>
-
-<h1 class="h3 mt-2 mb-3 font-weight-normal">新規追加</h1>
-<form class="w-25 mx-auto" action="/add" method="post">
-    <label for="" class="sr-only"></label>
-    <input class="form-control" id="" type="text" name="kamoku" placeholder="科目" required autofocus />
-    <label for="" class="sr-only"></label>
-    <input class="form-control" id="" type="text" name="kiroku" placeholder="記録" />
-    <label for="" class="sr-only"></label>
-    <input class="form-control" id="" type="number" name="time" placeholder="時間" required autofocus />
-    <input class="btn btn-outline-primary my-1" type="submit" value="追加" />
-</form>
-
-{% for study in all_study %}
-<div>
-    <input type="radio" name="update" value={{study.id}}>
-    <input type="checkbox" name="delete" form="delete" value="{{study.id}}">
-
-    {{study.kamoku}}：{{study.kiroku}}:{{study.time}}時間（{{study.date}})
-</div>
-{% endfor %}
-
-<br>
-<form action="/delete" method="post" id="delete">
-    <input type="submit" value="チェックしたアイテムを削除する">
-</form>
 
 <!-- <script type="text/javascript" src="js/home.js">
     var nowtime_doc = document.getElementById("nowtime");
