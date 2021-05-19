@@ -104,13 +104,15 @@ def new():
 
 @app.route("/add",methods=["post"])
 def add():
-    kamoku = request.form["kamoku"]
-    kiroku = request.form["kiroku"]
-    time = request.form["time"]
-    content = studyuser(kamoku,kiroku,time,datetime.now())
-    db_session.add(content)
-    db_session.commit()
-    return redirect(url_for("study"))
+    if "user_name" in session:
+        userid = session["user_name"] 
+        kamoku = request.form["kamoku"]
+        kiroku = request.form["kiroku"]
+        time = request.form["time"]
+        content = studyuser(userid,kamoku,kiroku,time,datetime.now())
+        db_session.add(content)
+        db_session.commit()
+        return redirect(url_for("study"))
 
 
 @app.route("/update",methods=["post"])

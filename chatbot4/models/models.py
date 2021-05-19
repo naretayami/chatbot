@@ -5,12 +5,14 @@ from datetime import datetime
 class studyuser(Base):
     __tablename__ = 'studyusers'
     id = Column(Integer, primary_key=True)
-    kamoku = Column(String(128), unique=True)
+    userid = Column(Text)
+    kamoku = Column(String(128))
     kiroku = Column(Text)
     time = Column(Integer)
     date = Column(DateTime, default=datetime.now())
 
-    def __init__(self, kamoku=None, kiroku=None, time=None, date=None):
+    def __init__(self, userid=None, kamoku=None, kiroku=None, time=None, date=None):
+        self.userid = userid
         self.kamoku = kamoku
         self.kiroku = kiroku
         self.time = time
