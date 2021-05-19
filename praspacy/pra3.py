@@ -8,5 +8,6 @@ for token in doc:
     print(token.text)
 for ent in doc.ents:
     print(ent.text, ent.label_)
-mihonomatsubara = doc[4:7]
+mihonomatsubara = doc[3:6]
 print("Missing entity:", mihonomatsubara.text)
+

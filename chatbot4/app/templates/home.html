@@ -6,6 +6,7 @@
 <h3><a class="logout" href="/logout">ログアウト</a></h3>
 
 <h3>{{ name }}さん、ようこそ。</h3>
+<h3><a class="study" href="/study">記録</a> </h3>
 
 <div class="boxed">
   <div>
@@ -19,20 +20,21 @@
     </div>
   </div>
   <div id="userInput">
+    <img id="kuma" src="/static/images/araiguma.png" alt="アライグマ"></img>
     <input id="textInput" type="text" name="msg" placeholder="ここに記入" />
   </div>
 
   <script>
     function getBotResponse() {
       var rawText = $("#textInput").val();
-      var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+      var userHtml = '<img id="araiguma" src="/static/images/araiguma.png" alt="アライグマ"></img>' +'<p class="userText"><span>' + rawText + "</span></p>";
       $("#textInput").val("");
       $("#chatbox").append(userHtml);
       document
         .getElementById("userInput")
         .scrollIntoView({ block: "start", behavior: "smooth" });
       $.get("/get", { msg: rawText }).done(function (data) {
-        var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+        var botHtml = '<img id="kuma" src="/static/images/kuma.png" alt="くま"></img>' + '<p class="botText"><span>' + data + "</span></p>";
         $("#chatbox").append(botHtml);
         document
           .getElementById("userInput")

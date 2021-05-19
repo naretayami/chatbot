@@ -7,14 +7,19 @@ logging.basicConfig(level=logging.INFO)
 bot = ChatBot(
         name='MyBot',
         read_only=True, # デフォルトではFalse
-        storage_adapter='chatterbot.storage.SQLStorageAdapter',
+        storage_adapter='chatterbot.storage.SQLStorageAdapter',        
+        # logic_adapters=[
+        #     'chatterbot.logic.MathematicalEvaluation',
+        #     'chatterbot.logic.TimeLogicAdapter'
+        # ],
         database_uri='sqlite:///mydb.sqlite3', # キャリア名:///データベース名
+
         logic_adapters = [
             {
                 'import_path': 'chatterbot.logic.BestMatch', # ロジックアダプターを指定
                 'default_response': ['How do you feel about it?', 'I still lack knowledge'], # ランダムに応答を返す, # 入力声明が信頼度が８０％以下だった場合に返される応答
-                'maximum_similarity_threshold': 0.80 # ８０％以下の信頼度だった場合にdefault_responseを応答させる
-            }
+                'maximum_similarity_threshold': 0.80, # ８０％以下の信頼度だった場合にdefault_responseを応答させ
+            },
         ]
 
 )
