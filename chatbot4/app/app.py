@@ -94,6 +94,7 @@ def study():
     else:
         return redirect(url_for("top",status="logout"))
 
+
 @app.route('/new')
 def new():
     if "user_name" in session:
@@ -101,6 +102,7 @@ def new():
         return render_template("new.html",name=name)
     else:
         return redirect(url_for("top",status="logout"))
+
 
 @app.route("/add",methods=["post"])
 def add():
