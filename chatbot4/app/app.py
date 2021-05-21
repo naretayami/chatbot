@@ -5,6 +5,7 @@ from models.database import db_session
 from datetime import datetime
 from app import key
 from hashlib import sha256
+from sqlalchemy.sql import func
 
 
 app = Flask(__name__)
@@ -89,8 +90,11 @@ def logout():
 def study():
     if "user_name" in session:
         name = session["user_name"]
+        # Stime = studyuser(time)
         all_study = studyuser.query.all()
-        return render_template("study.html",name=name,all_study=all_study)
+        countS = studyuser.query.filter_by(userid=name).count()
+        # studytime = studyuser.query(func.sum(time=Stime)).filter_by(userid=name)
+        return render_template("study.html",name=name,all_study=all_study,countS=countS)
     else:
         return redirect(url_for("top",status="logout"))
 
