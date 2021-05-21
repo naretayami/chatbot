@@ -1,15 +1,12 @@
 {% extends "layout.html" %}
 {% block time %}
 
+<h1>記録</h1>
 <h3><a class="logout" href="/logout">ログアウト</a></h3>
-
-<h3>{{ name }}さん、ようこそ。</h3>
+<h3>{{ name }}さん、ようこそ</h3>
 <h3><a class="chatbot" href="/home">Chatbot</a></h3>
-<h3>記録</h3>
 
-
-    こんばんは</p>
-    <h4>現在、{{countS}}件登録されています。</h4>
+<h4 id="touroku">現在、{{countS}}件登録されています。</h4>
 <div class="table-responsive">
     <table class="table table-striped">
         <tr>
@@ -35,7 +32,7 @@
                 <a class="edit" href="/edit/{{study.id}}">編集する</a>
             </td>
         </tr>
-       
+
         {% endif %}
         {% endfor %}
     </table>
@@ -94,6 +91,5 @@
     };
 
 </script>
-
 
 {% endblock %}
