@@ -1,11 +1,13 @@
 # chatterbot-corpusについて
 
 ## 日本語コーパス
-日本語コーパスが収録されているライブラリである、chatterbot-corpusは
-`$ pip install git+git://github.com/gunthercox/chatterbot-corpus/@ae8ccd2912baa79cf0412c3c0822835dab64059c`
-よりダウンロードしました。
+日本語コーパスが収録されているライブラリである、chatterbot-corpusは開発者のGitHubにある最新のリポジトリからコーパスデータをインストールしました。
 
-開発者のGitHubにある最新のリポジトリからコーパスデータをインストール。
+方法
+`$ pip install git+git://github.com/gunthercox/chatterbot-corpus/@ae8ccd2912baa79cf0412c3c0822835dab64059c`
+
+
+
 
 補足：
 `$ pip install chatterbot-corpus`
@@ -13,20 +15,26 @@
 `$ pip uninstall chatterbot-corpus`
 でアンインストールしてから再度インストールが必要です。
 
+
+
 開発者のGitHubにあるコーパスデータを一部、修正しました。
 主に修正したのは2点です。
-・明らかに不自然な応答(削除、または書き換え)
 
-・書き方のミス
-正しい例
-`-- こんにちは`
-` - こんにちは`
+・明らかに不自然な応答(削除、または書き換え)　　　　　
+
+
+
+・書き方のミス　　
+正しい例　　
+`-- こんにちは`　　
+` - こんにちは`　　
 ` - お元気ですか？`
 
 
-間違えている（と思われる）例
-`-- こんにちは`
-`- こんにちは`
-` - お元気ですか？`
+間違えている（と思われる）例　　
+`-- こんにちは`　　
+`- こんにちは`　　
+` - お元気ですか？`　　
+
 
 なので念のため。（備忘録）
