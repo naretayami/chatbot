@@ -17,6 +17,14 @@ h3 {
   text-align: center;
 }
 
+h4 {
+  text-align: center;
+}
+
+#touroku {
+  margin-top: 40px;
+}
+
 #kuma{
   width: 40px;
   height: auto;

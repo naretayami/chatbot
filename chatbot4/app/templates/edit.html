@@ -1,38 +1,21 @@
 {% extends "layout.html" %}
 {% block time %}
 
-
-
 <h1 class="h3 mt-2 mb-3 font-weight-normal">編集</h1>
 <h3>{{ name }}さん</h3>
 
-<form class="w-25 mx-auto" action="/update/{{id}}" method="post"　name="update">
+<form class="w-25 mx-auto" action="/update/{{id}}" method="post" 　name="update">
     <label for="" class="sr-only"></label>
-    <input class="form-control" id="" type="text" name="kamoku" value="{{study.kamoku}}" placeholder="科目" required autofocus />
+    <input class="form-control" id="" type="text" name="kamoku" value="{{study.kamoku}}" placeholder="科目" required
+        autofocus />
     <label for="" class="sr-only"></label>
     <input class="form-control" id="" type="text" name="kiroku" value="{{study.kiroku}}" placeholder="記録" />
     <label for="" class="sr-only"></label>
-    <input class="form-control" id="" type="number" name="time" value="{{study.time}}" placeholder="時間" required autofocus />
+    <input class="form-control" id="" type="number" name="time" value="{{study.time}}" placeholder="時間" required
+        autofocus />
     <input class="btn btn-outline-primary my-1" type="submit" value="編集を記録する" />
-</form> 
+</form>
 
-<h4><a class="return" href="study">戻る</a></h4>
+<h4><a class="return" href="/study">戻る</a></h4>
 
-
-<!-- 
-<p>編集</p>
-
-<form action="/update" method="post">
-    <input type="text" name="kamoku" placeholder="科目">
-    <input type="text" name="kiroku" placeholder="記録">
-    <input type="integer" name="time" placeholder="時間">
-    <input type="submit" value="更新">
-</form> -->
-<!-- 
-{% for study in all_study %}
-<div>
-    <input type="radio" name="update" value={{study.id}}>
-    <input type="checkbox" name="delete" form="delete" value="{{study.id}}">
-</div>
-{% endfor %} -->
 {% endblock %}

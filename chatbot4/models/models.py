@@ -9,7 +9,7 @@ class studyuser(Base):
     kamoku = Column(String(128))
     kiroku = Column(Text)
     time = Column(Integer)
-    date = Column(DateTime, default=datetime.now())
+    date = Column(DateTime, default=datetime.today())
 
     def __init__(self, userid=None, kamoku=None, kiroku=None, time=None, date=None):
         self.userid = userid
