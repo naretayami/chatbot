@@ -12,7 +12,15 @@ app = Flask(__name__)
 app.secret_key = key.SECRET_KEY
 
 bot = ChatBot(
-        name='MyBot',     
+        name='MyBot', 
+        read_only=True,
+        logic_adapters = [
+            {
+                'import_path': 'chatterbot.logic.BestMatch', 
+                'default_response': ['もうしわけありません。わかりません。','理解できませんでした。','ごめんなさい分かりません。'], 
+                'maximum_similarity_threshold': 0.50, 
+            },
+        ],    
 )
 
 
