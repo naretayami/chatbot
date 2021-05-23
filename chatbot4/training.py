@@ -1,11 +1,15 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
 import languages
+from my_tagging import MecabTagger
+
 
 bot = ChatBot(
         name='MyBot',
         read_only=True,
-        tagger_language=languages.JPN
+        tagger=MecabTagger
+        # tagger_language=languages.JPN,
+
 )
 
 conversation = [

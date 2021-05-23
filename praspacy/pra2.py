@@ -4,6 +4,11 @@ nlp = spacy.load("ja_core_news_sm")
 
 doc = nlp("彼女はおにぎりを食べた")
 
+doc1 = nlp('おにぎり')
+for token in doc1:
+    n1 = token.pos_
+print(n1)
+
 for token in doc:
     print(token.text, token.pos_)
 
