@@ -1,14 +1,15 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
-from my_tagging import MecabTagger
+# from my_tagging import MecabTagger
 
-# import languages
+import languages
 
 
 bot = ChatBot(
         name='MyBot',
-        tagger=MecabTagger,
+        # tagger=MecabTagger,
         database_uri='sqlite:///mydb.sqlite3',
+        tagger_language=languages.GINZA,
         # tagger_language=languages.JPN,
 
 )
