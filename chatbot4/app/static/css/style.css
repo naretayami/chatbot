@@ -34,10 +34,29 @@ h4 {
   width: 40px;
   height: auto;
   margin-left:  95%;
+}
 
+.boticon{
+  width: 40px;
+  height: auto;
+}
+
+.usericon{
+  width: 40px;
+  height: auto;
+  margin-left:  95%;
 }
 
 #chatbox {
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  margin-top: 60px;
+  /* height: 200px;
+  overflow: scroll; */
+}
+
+#chatbox2 {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
@@ -53,7 +72,22 @@ h4 {
   margin-top: 60px;
 }
 
+#userInput2 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  margin-top: 60px;
+}
+
 #textInput {
+  width: 90%;
+  background-color: rgba(185, 180, 180, 0.24);
+  border: 3px solid rgb(185, 180, 180);
+  font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+  font-size: 25px;
+}
+
+#textInput2 {
   width: 90%;
   background-color: rgba(185, 180, 180, 0.24);
   border: 3px solid rgb(185, 180, 180);
@@ -69,9 +103,25 @@ h4 {
   line-height: 30px;
 }
 
+.userText2 {
+  color: black;
+  font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+  font-size: 17px;
+  text-align: right;
+  line-height: 30px;
+}
+
 .userText span {
   display: inline-block;
   background-color:rgb(247, 162, 209);
+  padding: 13px;
+  border-radius: 10px;
+  max-width: 40%;
+}
+
+.userText2 span {
+  display: inline-block;
+  background-color:rgb(255, 185, 106);
   padding: 13px;
   border-radius: 10px;
   max-width: 40%;
@@ -85,9 +135,25 @@ h4 {
   line-height: 30px;
 }
 
+.botText2 {
+  color: black;
+  font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+  font-size: 17px;
+  text-align: left;
+  line-height: 30px;
+}
+
 .botText span {
   display: inline-block;
   background-color:rgb(148, 246, 250);
+  padding: 13px;
+  border-radius: 10px;
+  max-width: 40%;
+}
+
+.botText2 span {
+  display: inline-block;
+  background-color:rgb(94, 255, 107);
   padding: 13px;
   border-radius: 10px;
   max-width: 40%;

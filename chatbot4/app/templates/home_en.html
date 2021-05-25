@@ -7,35 +7,34 @@
 
 <h3>Hello,{{ name }}.</h3>
 <h3><a class="chatbot2" href="/home" >Chatbot Japanese.ver</a></h3>
-<h3><a class="study" href="/study">Record</a> </h3>
+<h3><a class="study" href="/study">Record(Japanese)</a> </h3>
 
 <div class="boxed">
   <div>
     <div id="chatbox2">
-      <img id="kuma" src="/static/images/kuma.png" alt="くま"></img>
-      <link href="{{ url_for('static',filename='images/kuma.png') }}">
+      <img class="boticon" src="/static/images/tanuki.png" alt="tanuki"></img>
 
-      <p class="botText">
+      <p class="botText2">
         <span>Will you have a chat with me? </span>
       </p>
     </div>
   </div>
   <div id="userInput2">
-    <img id="kuma" src="/static/images/cheetah.png" alt="cheetah"></img>
+    <img class="boticon" src="/static/images/cheetah.png" alt="cheetah"></img>
     <input id="textInput2" type="text" name="msg2" placeholder="USER INPUT" /> 
   </div>
 
   <script>
     function getBotResponse() {
       var rawText = $("#textInput2").val();
-      var userHtml = '<img id="araiguma" src="/static/images/cheetah.png" alt="cheetah"></img>' +'<p class="userText"><span>' + rawText + "</span></p>";
+      var userHtml = '<img class="usericon" src="/static/images/cheetah.png" alt="cheetah"></img>' +'<p class="userText2"><span>' + rawText + "</span></p>";
       $("#textInput2").val("");
       $("#chatbox2").append(userHtml);
       document
         .getElementById("userInput2")
         .scrollIntoView({ block: "start", behavior: "smooth" });
       $.get("/get2", { msg2: rawText }).done(function (data) {
-        var botHtml = '<img id="kuma" src="/static/images/tanuki.png" alt="tanuki"></img>' + '<p class="botText"><span>' + data + "</span></p>";
+        var botHtml = '<img class="boticon" src="/static/images/tanuki.png" alt="tanuki"></img>' + '<p class="botText2"><span>' + data + "</span></p>";
         $("#chatbox2").append(botHtml);
         document
           .getElementById("userInput2")
