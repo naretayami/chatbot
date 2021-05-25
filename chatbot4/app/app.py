@@ -23,6 +23,10 @@ bot = ChatBot(
         # ],    
 )
 
+bot2 = ChatBot(
+        name='Bot2',     
+)
+
 
 @app.route("/")
 def index():    
@@ -40,6 +44,21 @@ def home():
     if "user_name" in session:
         name = session["user_name"]
         return render_template("home.html",name=name)
+    else:
+        return redirect(url_for("top",status="logout"))
+
+
+@app.route("/get2")
+def get_bot2_response_en():    
+    userText2 = request.args.get('msg')    
+    return str(bot2.get_response(userText2)) 
+
+
+@app.route("/home_en")
+def home():
+    if "user_name" in session:
+        name = session["user_name"]
+        return render_template("home_en.html",name=name)
     else:
         return redirect(url_for("top",status="logout"))
 
