@@ -14,6 +14,8 @@ app.secret_key = key.SECRET_KEY
 bot = ChatBot(
         name='MyBot', 
         read_only=True,
+        database_uri='sqlite:///mydb.sqlite3',
+
         # logic_adapters = [
         #     {
         #         'import_path': 'chatterbot.logic.BestMatch', 
@@ -24,7 +26,10 @@ bot = ChatBot(
 )
 
 bot2 = ChatBot(
-        name='Bot2',     
+        name='Bot2',  
+        read_only=True,
+        database_uri='sqlite:///db.sqlite3',
+   
 )
 
 
@@ -50,12 +55,12 @@ def home():
 
 @app.route("/get2")
 def get_bot2_response_en():    
-    userText2 = request.args.get('msg')    
+    userText2 = request.args.get('msg2')    
     return str(bot2.get_response(userText2)) 
 
 
 @app.route("/home_en")
-def home():
+def home_en():
     if "user_name" in session:
         name = session["user_name"]
         return render_template("home_en.html",name=name)

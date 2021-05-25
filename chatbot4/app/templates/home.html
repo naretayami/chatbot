@@ -6,13 +6,13 @@
 <h3><a class="logout" href="/logout">ログアウト</a></h3>
 
 <h3>{{ name }}さん、ようこそ</h3>
+<h3><a class="chatbot2" href="/home_en" >Chatbot英語.ver</a></h3>
 <h3><a class="study" href="/study">記録</a> </h3>
 
 <div class="boxed">
   <div>
     <div id="chatbox">
-      <img id="kuma" src="/static/images/kuma.png" alt="くま"></img>
-      <link href="{{ url_for('static',filename='images/neko.png') }}">
+      <img id="kuma" src="/static/images/neko.png" alt="ねこ"></img>
 
       <p class="botText">
         <span>こんにちは。何か話しかけてみてね </span>
@@ -34,7 +34,7 @@
         .getElementById("userInput")
         .scrollIntoView({ block: "start", behavior: "smooth" });
       $.get("/get", { msg: rawText }).done(function (data) {
-        var botHtml = '<img id="kuma" src="/static/images/neko.png" alt="くま"></img>' + '<p class="botText"><span>' + data + "</span></p>";
+        var botHtml = '<img id="kuma" src="/static/images/neko.png" alt="ねこ"></img>' + '<p class="botText"><span>' + data + "</span></p>";
         $("#chatbox").append(botHtml);
         document
           .getElementById("userInput")
