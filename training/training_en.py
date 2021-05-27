@@ -8,7 +8,6 @@ bot2 = ChatBot(
 )
 
 trainer = ChatterBotCorpusTrainer(bot)
-
 trainer.train(
         'chatterbot.corpus.english' 
 )
