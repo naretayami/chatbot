@@ -1,9 +1,6 @@
 from chatterbot import ChatBot
-import my_languages
 from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
-# from my_tagging import MecabTagger
-
-
+import my_languages
 
 bot = ChatBot(
         name='MyBot',
@@ -11,7 +8,6 @@ bot = ChatBot(
         # tagger=MecabTagger,
         # tagger_language=my_languages.JPN,
         database_uri='sqlite:///mydb.sqlite3',
-
 )
 
 conversation = [
@@ -41,7 +37,6 @@ trainer.train(conversation)
 trainer.train(conversation2)
 
 trainer = ChatterBotCorpusTrainer(bot)
-
 trainer.train(
         'chatterbot.corpus.japanese' 
 )
